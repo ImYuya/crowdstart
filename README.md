@@ -67,8 +67,8 @@
 
   ```
   module.exports = {
-  mnemonic: "xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx",
-  provider: "https://rinkeby.infura.io/v3/xxxxxxxxxxxxxxxxxxxxxxxxxx"
+    mnemonic: "xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx",
+    provider: "https://rinkeby.infura.io/v3/xxxxxxxxxxxxxxxxxxxxxxxxxx"
   };
   ```
 
