@@ -2,3 +2,4 @@ ADDRESS
 node_modules
 .next
 ethereum/build
+ethereum/private.js
