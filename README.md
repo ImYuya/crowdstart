@@ -47,7 +47,7 @@
   ```
   npm install --save fs-extra ganache-cli mocha solc@0.4.25 web3@1.0.0-beta.37
   npm install --save truffle-hdwallet-provider
-  npm install --save next react react-dom  // ビデオではnext@4.1.4が使用されている
+  npm install --save next react react-dom
   npm install --save next-routes semantic-ui-css semantic-ui-react
   ```
 
