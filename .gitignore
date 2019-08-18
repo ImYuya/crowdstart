@@ -1,2 +1,4 @@
 ADDRESS
 node_modules
+.next
+./ethereum/build
