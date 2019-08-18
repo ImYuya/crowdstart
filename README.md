@@ -71,13 +71,6 @@
   Contract deployed to 0x010B3F971ddC803424158fC1baF2d459A95EC153
   ```
 
-- `npm run dev`によって、next による表示テスト
-
-  http://localhost:3000　に接続される <br>
-  また、上記の際、下図のように`package.json`ファイル内の scripts の設定を行っていること
-
-  `"scripts": { "test": "mocha", "dev": "next dev" },`
-
 - `ethereum/factory.js`ファイルの編集
 
   デプロイ時に記録したコントラクトアドレスを以下の"xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"に代入
@@ -88,6 +81,13 @@
    "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
   );
   ```
+
+* `npm run dev`によって、next による表示テスト
+
+  http://localhost:3000　に接続される <br>
+  また、上記の際、下図のように`package.json`ファイル内の scripts の設定を行っていること
+
+  `"scripts": { "test": "mocha", "dev": "next dev" },`
 
 ## 要素技術
 
