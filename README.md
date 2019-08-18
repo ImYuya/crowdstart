@@ -61,6 +61,51 @@
 
    <img width="405" alt="スクリーンショット 2019-08-18 14 21 44" src="https://user-images.githubusercontent.com/7827576/63220483-9e4ada80-c1c3-11e9-9ecc-5a355e0514e7.png">
 
+- `ethereum`フォルダ内で`private.js`を作成
+
+  下記の mnemonic および provider の xxx の箇所を記入する
+
+  ```
+  module.exports = {
+  mnemonic: "xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx xxx",
+  provider: "https://rinkeby.infura.io/v3/xxxxxxxxxxxxxxxxxxxxxxxxxx"
+  };
+  ```
+
+  - MNEMONIC を取得
+
+    Metamask でニーモニックを調べる。（注意！！：　ニーモニックは他人には絶対に教えないでください。）
+
+    <table style="border-style: none;"><tr>
+      <td style="border-style: none;">
+      <img width="355" alt="スクリーンショット 2019-08-17 12 13 03" src="https://user-images.githubusercontent.com/7827576/63206078-08428180-c0e9-11e9-88f4-54f801a5689f.png">
+      </td>
+    <td style="border-style: none;">
+      <img width="343" alt="スクリーンショット 2019-08-17 12 13 13" src="https://user-images.githubusercontent.com/7827576/63206085-12648000-c0e9-11e9-9626-295134cefaa7.png">
+    </td>
+    <td style="border-style: none;">
+      <img width="345" alt="スクリーンショット 2019-08-17 12 13 22" src="https://user-images.githubusercontent.com/7827576/63206086-14c6da00-c0e9-11e9-8aa5-32c9c91fdd3a.png">
+    </td>
+    <td style="border-style: none;">
+      <img width="351" alt="スクリーンショット 2019-08-17 12 13 36" src="https://user-images.githubusercontent.com/7827576/63206087-17293400-c0e9-11e9-82fd-f99b87b97114.png">
+    </td>
+    </table>
+
+  - PROVIDER ID の取得
+
+    [infura](https://infura.io/)にてアカウントを作成し、「Create new Project」ボタンで新規プロジェクトを作成.　<br>
+    プロジェクトを開いて、PROJECT ID をコピー.　<br>
+    今回は Rinkeby テストネットを使用しますが、Geth や Ganache で立ち上げたプライベートネット`http://localhost:8545`でも OK.
+
+    <table style="border-style: none;"><tr>
+    <td style="border-style: none;">
+      <img width="500" alt="スクリーンショット 2019-08-17 13 46 48" src="https://user-images.githubusercontent.com/7827576/63206825-15666d00-c0f7-11e9-8207-001dd318623f.png">
+    </td>
+    <td style="border-style: none;">
+      <img width="400" alt="スクリーンショット 2019-08-17 12 02 26" src="https://user-images.githubusercontent.com/7827576/63206824-14354000-c0f7-11e9-97da-0db04051a06e.png">
+    </td>
+    </table>
+
 - `ethereum`フォルダ内で`node deploy.js`実行
 
   rinkeby テストネット内にコントラクトがデプロイされる <br>
