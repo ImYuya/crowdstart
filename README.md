@@ -78,17 +78,17 @@
 
     <table style="border-style: none;"><tr>
       <td style="border-style: none;">
-      <img width="355" alt="スクリーンショット 2019-08-17 12 13 03" src="https://user-images.githubusercontent.com/7827576/63206078-08428180-c0e9-11e9-88f4-54f801a5689f.png">
+       <img width="355" alt="スクリーンショット 2019-08-17 12 13 03" src="https://user-images.githubusercontent.com/7827576/63206078-08428180-c0e9-11e9-88f4-54f801a5689f.png">
       </td>
-    <td style="border-style: none;">
-      <img width="343" alt="スクリーンショット 2019-08-17 12 13 13" src="https://user-images.githubusercontent.com/7827576/63206085-12648000-c0e9-11e9-9626-295134cefaa7.png">
-    </td>
-    <td style="border-style: none;">
-      <img width="345" alt="スクリーンショット 2019-08-17 12 13 22" src="https://user-images.githubusercontent.com/7827576/63206086-14c6da00-c0e9-11e9-8aa5-32c9c91fdd3a.png">
-    </td>
-    <td style="border-style: none;">
-      <img width="351" alt="スクリーンショット 2019-08-17 12 13 36" src="https://user-images.githubusercontent.com/7827576/63206087-17293400-c0e9-11e9-82fd-f99b87b97114.png">
-    </td>
+      <td style="border-style: none;">
+       <img width="343" alt="スクリーンショット 2019-08-17 12 13 13" src="https://user-images.githubusercontent.com/7827576/63206085-12648000-c0e9-11e9-9626-295134cefaa7.png">
+      </td>
+      <td style="border-style: none;">
+       <img width="345" alt="スクリーンショット 2019-08-17 12 13 22" src="https://user-images.githubusercontent.com/7827576/63206086-14c6da00-c0e9-11e9-8aa5-32c9c91fdd3a.png">
+      </td>
+      <td style="border-style: none;">
+       <img width="351" alt="スクリーンショット 2019-08-17 12 13 36" src="https://user-images.githubusercontent.com/7827576/63206087-17293400-c0e9-11e9-82fd-f99b87b97114.png">
+      </td>
     </table>
 
   - PROVIDER ID の取得
