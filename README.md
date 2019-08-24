@@ -127,7 +127,7 @@
   );
   ```
 
-* `npm run dev`によって、next による表示テスト
+- `npm run dev`による表示テスト
 
   http://localhost:3000　に接続される <br>
   また、上記の際、下図のように`package.json`ファイル内の scripts の設定を行っていること
