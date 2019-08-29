@@ -29,26 +29,3 @@ if (typeof window !== "undefined" && typeof window.web3 !== "undefined") {
 }
 
 export default web3;
-
-// window.addEventListener(‘load’, async () => {
-//   // Modern dapp browsers
-//   if (window.ethereum) {
-//     window.web3 = new Web3(ethereum);
-//     try {
-//       // Request account access if needed
-//       await ethereum.enable();
-//     } catch (error) {
-//       // User denied account access
-//     }
-//     // Legacy dapp browsers
-//   } else if (window.web3) {
-//     window.web3 = new Web3(web3.currentProvider);
-//   }
-//   // Non-dapp browsers
-//   else {
-//     // Handle the case where the user doesn’t have Non-Ethereum
-//     console.log(‘No web3 ? You should consider trying MetaMask!’);
-//   }
-//   // Now you can start your app & access web3 freely
-//   startApp()
-// })
