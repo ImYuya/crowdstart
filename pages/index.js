@@ -11,7 +11,30 @@ class CampaignIndex extends Component {
     return { campaigns };
   }
 
-  renderCampaigns() {
+  // renderCampaigns = async () => {
+  //   await this.setState({
+  //     Campaigns: (
+  //       <Card.Group
+  //         items={this.props.campaigns.map(async address => {
+  //           const campaignName = await factory.methods
+  //             .getCampaignName(address)
+  //             .call();
+  //           return {
+  //             header: campaignName,
+  //             description: (
+  //               <Link route={`/campaigns/${address}`}>
+  //                 <a>View Campaign</a>
+  //               </Link>
+  //             ),
+  //             fluid: true
+  //           };
+  //         })}
+  //       />
+  //     )
+  //   });
+  // };
+
+  renderCampaigns = () => {
     const items = this.props.campaigns.map(address => {
       return {
         header: address,
@@ -25,7 +48,7 @@ class CampaignIndex extends Component {
     });
 
     return <Card.Group items={items} />;
-  }
+  };
 
   render() {
     return (

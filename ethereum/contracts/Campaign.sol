@@ -11,7 +11,7 @@ contract CampaignFactory {
     function getDeployedCampaigns() public view returns (Campaign[] memory) {
         return deployedCampaigns;
     }
-    
+
     function getCampaignName(Campaign campaignAddress) public view returns (string) {
         return campaignAddress.getCampaignName();
     }
