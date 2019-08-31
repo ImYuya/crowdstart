@@ -3,13 +3,17 @@ pragma solidity  ^0.4.25;
 contract CampaignFactory {
     Campaign[] public deployedCampaigns;
 
-    function createCampaign(uint minimum) public {
-        Campaign newCampaign = new Campaign(minimum, msg.sender);
+    function createCampaign(string campaign,uint minimum) public {
+        Campaign newCampaign = new Campaign(campaign, minimum, msg.sender);
         deployedCampaigns.push(newCampaign);
     }
 
     function getDeployedCampaigns() public view returns (Campaign[] memory) {
         return deployedCampaigns;
+    }
+    
+    function getCampaignName(Campaign campaignAddress) public view returns (string) {
+        return campaignAddress.getCampaignName();
     }
 }
 
@@ -28,20 +32,21 @@ contract Campaign {
     uint public minimumContribution;
     mapping(address => bool) public approvers;
     uint public approversCount;
+    string campaignName;
 
     modifier restricted() {
         require(msg.sender == manager, "Sender not authorized.");
         _;
     }
 
-    constructor (uint minimum, address creator) public {
+    constructor (string campaign, uint minimum, address creator) public {
         manager = creator;
         minimumContribution = minimum;
+        campaignName = campaign;
     }
 
     function contribute() public payable {
         require(msg.value > minimumContribution, "Value is less than minimumContribution.");
-
         approvers[msg.sender] = true;
         approversCount++;
     }
@@ -80,18 +85,22 @@ contract Campaign {
     }
 
     function getSummary() public view returns (
-      uint, uint, uint, uint, address
+      uint, uint, uint, uint, address, string
       ) {
         return (
           minimumContribution,
           address(this).balance,
           requests.length,
           approversCount,
-          manager
+          manager,
+          campaignName
         );
     }
 
     function getRequestsCount() public view returns (uint) {
         return requests.length;
+    }
+    function getCampaignName() public view returns (string) {
+        return campaignName;
     }
 }

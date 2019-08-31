@@ -16,13 +16,16 @@ beforeEach(async () => {
 
   factory = await new web3.eth.Contract(JSON.parse(compiledFactory.interface))
     .deploy({ data: compiledFactory.bytecode })
-    .send({ from: accounts[0], gas: "1000000" });
+    .send({ from: accounts[0], gas: "3000000" })
+    .on("error", console.log);
 
   //  Use the factory to create instance of campaign.For testing set the minimumContribution to 100 Wei.
-  await factory.methods.createCampaign("100").send({
-    from: accounts[0],
-    gas: "1000000"
-  });
+  await factory.methods
+    .createCampaign("コワーキングスペースを作ろう!", "100")
+    .send({
+      from: accounts[0],
+      gas: "1000000"
+    });
 
   // Take the 1st element out of the array returned by getDeployedCampaigns() & assign it to campaignAddress.
   [campaignAddress] = await factory.methods.getDeployedCampaigns().call();
