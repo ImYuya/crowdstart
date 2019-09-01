@@ -11,6 +11,7 @@ class RequestIndex extends Component {
     const campaign = Campaign(address);
     const requestCount = await campaign.methods.getRequestsCount().call();
     const approversCount = await campaign.methods.approversCount().call();
+    const campaignName = await campaign.methods.getCampaignName().call();
 
     const requests = await Promise.all(
       Array(parseInt(requestCount))
@@ -20,7 +21,7 @@ class RequestIndex extends Component {
         })
     );
 
-    return { address, requests, requestCount, approversCount };
+    return { address, requests, requestCount, approversCount, campaignName };
   }
 
   renderRows() {
@@ -43,6 +44,7 @@ class RequestIndex extends Component {
     return (
       <Layout>
         <h3>Requests</h3>
+        <h4>{this.props.campaignName}</h4>
         <Link route={`/campaigns/${this.props.address}/requests/new`}>
           <a>
             <Button primary floated="right" style={{ marginBottom: 10 }}>

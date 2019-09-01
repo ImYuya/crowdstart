@@ -18,9 +18,15 @@ class CampaignShow extends Component {
       balance: summary[1],
       requestsCount: summary[2],
       approversCount: summary[3],
-      manager: summary[4]
+      manager: summary[4],
+      campaignName: summary[5]
     };
   }
+
+  getName = () => {
+    const { campaignName } = this.props;
+    return campaignName;
+  };
 
   renderCards() {
     const {
@@ -72,6 +78,7 @@ class CampaignShow extends Component {
     return (
       <Layout>
         <h3>Campaign Show</h3>
+        <h4>{this.getName()}</h4>
         <Grid>
           <Grid.Row>
             <Grid.Column width={10}>{this.renderCards()}</Grid.Column>
