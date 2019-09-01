@@ -16,7 +16,8 @@ const CampaignIndex = () => {
             .getCampaignName(address)
             .call();
           const _item = {
-            header: campaignName + " (contract::" + address + ")",
+            header: campaignName,
+            meta: address,
             description: (
               <Link route={`/campaigns/${address}`}>
                 <a>View Campaign</a>
