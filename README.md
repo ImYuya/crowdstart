@@ -152,6 +152,7 @@
 | minimumContribution | uint      | 貢献者または承認者(approver)と見なされるために必要な最小限の寄付 |
 | approvers           | mapping   | お金を寄付したすべての人のアドレスリスト                         |
 | requests            | Request[] | マネージャー(manager)が作成したリクエストのリスト                |
+| campaignName        | string    | キャンペーンの名前                                               |
 
 関数:
 
@@ -162,6 +163,7 @@
 | createRequest   | 新しい支出リクエスト(spending request)を作成するためにマネージャ(manager)によって呼び出される |
 | approveRequest  | 支出リクエスト(spending request)を承認するために各貢献者によって呼び出される                  |
 | finalizeRequest | リクエストが十分に承認された後、マネージャーはこれを呼び出して、仕入先に送金する              |
+| getCampaignName | この Campaign 名称のリスト返却　                                                              |
 
 リクエスト(Request)の構造:
 
@@ -188,6 +190,7 @@
 | -------------------- | ---------------------------------------------------------------- |
 | createCampaign       | 新しい Campaign のインスタンス作成および作成されたアドレスの保存 |
 | getDeployedCampaigns | デプロイされた全ての Campaign アドレスのリスト返却　             |
+| getCampaignName      | デプロイされた全ての Campaign 名称のリスト返却　                 |
 
 ### ルーティング
 
