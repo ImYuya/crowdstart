@@ -24,11 +24,10 @@ const CampaignIndex = () => {
             ),
             fluid: true
           };
-          console.log(_item);
+          // console.log(_item);
           return _item;
         })
       );
-      console.log(_items);
       setCampaigns(_items);
     })();
   }, []);
