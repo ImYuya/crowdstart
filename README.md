@@ -19,7 +19,7 @@
 
 <table style="border-style: none;"><tr>
   <td style="border-style: none;">
-    <img width="666" alt="スクリーンショット 2019-08-18 20 53 16" src="https://user-images.githubusercontent.com/7827576/63224544-b3922a00-c200-11e9-86c2-c2f6ba233502.png">
+    <img width="578" alt="スクリーンショット 2019-09-01 13 36 55" src="https://user-images.githubusercontent.com/7827576/64071831-a45db280-ccbd-11e9-8c93-467f2910cf7a.png">
   </td>
   <td style="border-style: none;">
    <img width="586" alt="スクリーンショット 2019-08-18 21 05 46" src="https://user-images.githubusercontent.com/7827576/63224589-5c408980-c201-11e9-80a9-715d3a23e6dd.png">
