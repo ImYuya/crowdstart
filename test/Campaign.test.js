@@ -24,7 +24,7 @@ beforeEach(async () => {
     .createCampaign("コワーキングスペースを作ろう!", "100")
     .send({
       from: accounts[0],
-      gas: "1000000"
+      gas: "3000000"
     });
 
   // Take the 1st element out of the array returned by getDeployedCampaigns() & assign it to campaignAddress.
@@ -53,7 +53,8 @@ describe("Campaigns", () => {
   it("should allow people to contribute money and marks them as approvers.", async () => {
     await campaign.methods.contribute().send({
       value: "200",
-      from: accounts[1]
+      from: accounts[1],
+      gas: "1000000"
     });
     const isContributor = await campaign.methods.approvers(accounts[1]).call();
     assert(isContributor);
@@ -90,7 +91,8 @@ describe("Campaigns", () => {
     // Contribute 10 Ether to Contract to become an Approver.
     await campaign.methods.contribute().send({
       from: accounts[0],
-      value: web3.utils.toWei("10", "ether")
+      value: web3.utils.toWei("10", "ether"),
+      gas: "1000000"
     });
     // Create a Request using 5 of the 10 Ether in the Contract.
     await campaign.methods
@@ -115,5 +117,63 @@ describe("Campaigns", () => {
     balance = parseFloat(balance);
     console.log(balance);
     assert(balance > 104);
+  });
+
+  // Assert a Campaign closed
+  it("should close a Campaign", async () => {
+    // Contribute 10 Ether to Contract to become an Approver.
+    await campaign.methods.contribute().send({
+      from: accounts[0],
+      value: web3.utils.toWei("10", "ether"),
+      gas: "1000000"
+    });
+
+    await campaign.methods.contribute().send({
+      from: accounts[1],
+      value: web3.utils.toWei("10", "ether"),
+      gas: "1000000"
+    });
+    // Create a Request using 5 of the 10 Ether in the Contract.
+    await campaign.methods
+      .createRequest("A", web3.utils.toWei("10", "ether"), accounts[2])
+      .send({
+        from: accounts[0],
+        gas: "1000000"
+      });
+
+    // Approver approves the Request at requests[0].
+    await campaign.methods.approveRequest(0).send({
+      from: accounts[0],
+      gas: "1000000"
+    });
+    // Approver approves the Request at requests[0].
+    await campaign.methods.approveRequest(0).send({
+      from: accounts[1],
+      gas: "1000000"
+    });
+    // Manager finalizes the Request.Should disperse $ to accounts[1].
+    await campaign.methods.finalizeRequest(0).send({
+      from: accounts[0],
+      gas: "1000000"
+    });
+    await campaign.methods.finalizeCampaign().send({
+      from: accounts[0],
+      gas: "1000000"
+    });
+
+    let contractBalance = await web3.eth.getBalance(campaign.options.address);
+    let balance0 = await web3.eth.getBalance(accounts[0]);
+    let balance1 = await web3.eth.getBalance(accounts[1]);
+    contractBalance = web3.utils.fromWei(contractBalance, "ether");
+    contractBalance = parseFloat(contractBalance);
+    balance0 = web3.utils.fromWei(balance0, "ether");
+    balance0 = parseFloat(balance0);
+    balance1 = web3.utils.fromWei(balance1, "ether");
+    balance1 = parseFloat(balance1);
+    console.log(contractBalance);
+    console.log(balance0);
+    console.log(balance1);
+    assert(balance0 > 84);
+    assert(balance1 > 99);
   });
 });

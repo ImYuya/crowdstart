@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Card, Button } from "semantic-ui-react";
 import factory from "../ethereum/factory";
+import Campaign from "../ethereum/campaign";
+import web3 from "../ethereum/web3";
 import Layout from "../components/Layout";
 import { Link } from "../routes";
 
@@ -15,6 +17,13 @@ const CampaignIndex = () => {
           const campaignName = await factory.methods
             .getCampaignName(address)
             .call();
+          const campaign = await Campaign(address);
+          const finalisedCampaign = await campaign.methods.finalisedCampaign;
+          console.log(web3.currentProvider.selectedAddress);
+          const isManager = await campaign.methods.getSummary().call();
+          console.log(isManager);
+          // const summary = await campaign.methods.getSummary().call();
+          // console.log(summary);
           const _item = {
             header: campaignName,
             meta: address,
@@ -23,7 +32,14 @@ const CampaignIndex = () => {
                 <a>View Campaign</a>
               </Link>
             ),
-            fluid: true
+            fluid: true,
+            extra: finalisedCampaign ? (
+              <div className="ui one buttons">
+                <Button basic color="green">
+                  Close
+                </Button>
+              </div>
+            ) : null
           };
           // console.log(_item);
           return _item;
