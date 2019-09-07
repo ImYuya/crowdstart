@@ -124,14 +124,18 @@ contract Campaign {
         return requests.length;
     }
 
-    function finalizeCampaign() public restricted isOpen returns (bool) {
-        if (address(this).balance > 0) {
-            uint _balanceNow = address(this).balance;
-            for(uint i; i < contributes.length; i++) {
-               contributes[i].contributer.transfer((contributes[i].amount * _balanceNow) / totalAmount);
-            }
-        }
-        finalizedCampaign = true;
-        return finalizedCampaign;
+    function getBalance() public view returns (uint) {
+        return address(this).balance;
     }
+
+    // function finalizeCampaign() public restricted isOpen returns (bool) {
+    //     if (address(this).balance > 0) {
+    //         uint _balanceNow = address(this).balance;
+    //         for(uint i; i < contributes.length; i++) {
+    //            contributes[i].contributer.transfer((contributes[i].amount * _balanceNow) / totalAmount);
+    //         }
+    //     }
+    //     finalizedCampaign = true;
+    //     return finalizedCampaign;
+    // }
 }

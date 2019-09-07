@@ -73,6 +73,17 @@ describe("Campaigns", () => {
     }
   });
 
+  // Assert getBalance
+  it("should recieve a getBalance", async () => {
+    try {
+      const balance = await campaign.methods.getBalance().call();
+      console.log(balance);
+      assert(balance);
+    } catch (err) {
+      assert(err);
+    }
+  });
+
   // Assert that a manager has ability to create payment Request.
   it("should allow manager to make a payment Request.", async () => {
     await campaign.methods

@@ -20,8 +20,8 @@ const CampaignIndex = () => {
           const campaign = await Campaign(address);
           const finalisedCampaign = await campaign.methods.finalisedCampaign;
           console.log(web3.currentProvider.selectedAddress);
-          const isManager = await campaign.methods.getSummary().call();
-          console.log(isManager);
+          const balance = await campaign.methods.getSummary().call();
+          console.log(balance);
           // const summary = await campaign.methods.getSummary().call();
           // console.log(summary);
           const _item = {
