@@ -22,6 +22,6 @@
     "semantic-ui-react": "^0.87.3",
     "solc": "^0.4.25",
     "truffle-hdwallet-provider": "^1.0.16",
-    "web3": "^1.0.0-beta.37"
+    "web3": "^1.2.1"
   }
 }

@@ -167,7 +167,7 @@ describe("Campaigns", () => {
       from: accounts[0],
       gas: "1000000"
     });
-    await campaign.methods.finalizeCampaign().send({
+    const finalizedCampaign = await campaign.methods.finalizeCampaign().send({
       from: accounts[0],
       gas: "1000000"
     });
@@ -186,5 +186,6 @@ describe("Campaigns", () => {
     console.log(balance1);
     assert(balance0 > 84);
     assert(balance1 > 99);
+    assert(finalizedCampaign == true);
   });
 });

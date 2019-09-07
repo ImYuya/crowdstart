@@ -3,8 +3,8 @@ pragma solidity  ^0.4.25;
 contract CampaignFactory {
     Campaign[] public deployedCampaigns;
 
-    function createCampaign(string campaign,uint minimum) public {
-        Campaign newCampaign = new Campaign(campaign, minimum, msg.sender);
+    function createCampaign(string campaign, string description, uint minimum) public {
+        Campaign newCampaign = new Campaign(campaign, description, minimum, msg.sender);
         deployedCampaigns.push(newCampaign);
     }
 
@@ -42,6 +42,7 @@ contract Campaign {
     string public campaignName;
     bool public finalizedCampaign;
     uint public totalAmount;
+    string public campaignDescription;
 
     modifier restricted() {
         require(msg.sender == manager, "Sender not authorized.");
@@ -53,10 +54,11 @@ contract Campaign {
         _;
     }
 
-    constructor (string campaign, uint minimum, address creator) public {
+    constructor (string campaign, string description, uint minimum, address creator) public {
         manager = creator;
         minimumContribution = minimum;
         campaignName = campaign;
+        campaignDescription = description;
         finalizedCampaign = false;
     }
 
@@ -108,7 +110,7 @@ contract Campaign {
     }
 
     function getSummary() public view returns (
-      uint, uint, uint, uint, address, string
+      uint, uint, uint, uint, address, string, bool, string
       ) {
         return (
           minimumContribution,
@@ -116,26 +118,32 @@ contract Campaign {
           requests.length,
           approversCount,
           manager,
-          campaignName
+          campaignName,
+          finalizedCampaign,
+          campaignDescription
         );
+    }
+
+    function isMeManager(address selectedAddress) public view returns (bool) {
+        if (manager == selectedAddress) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     function getRequestsCount() public view returns (uint) {
         return requests.length;
     }
 
-    function getBalance() public view returns (uint) {
-        return address(this).balance;
+    function finalizeCampaign() public restricted isOpen returns (bool) {
+        if (address(this).balance > 0) {
+            uint _balanceNow = address(this).balance;
+            for(uint i; i < contributes.length; i++) {
+               contributes[i].contributer.transfer((contributes[i].amount * _balanceNow) / totalAmount);
+            }
+        }
+        finalizedCampaign = true;
+        return finalizedCampaign;
     }
-
-    // function finalizeCampaign() public restricted isOpen returns (bool) {
-    //     if (address(this).balance > 0) {
-    //         uint _balanceNow = address(this).balance;
-    //         for(uint i; i < contributes.length; i++) {
-    //            contributes[i].contributer.transfer((contributes[i].amount * _balanceNow) / totalAmount);
-    //         }
-    //     }
-    //     finalizedCampaign = true;
-    //     return finalizedCampaign;
-    // }
 }
